@@ -1,0 +1,19 @@
+Compile a CPP file to generate executable target file:
+
+    g++ hello.cpp
+    Creates ./a.exe
+
+Compile the file_name and not assembling or linking
+
+    g++ -S file_name
+    Creates file_name.s assembly file
+
+Compile and assemble the file_name and not link the object code to produce executable file
+
+    g++ -c file_name.cpp
+    Creates file_name.o object code
+
+Compiles and links file_name
+
+    g++ -o main.exe file_name.cpp
+    Creates main.exe executable
