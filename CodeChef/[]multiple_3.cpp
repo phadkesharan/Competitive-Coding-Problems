@@ -8,27 +8,31 @@ Concepts used :
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+int main()
+{
     int t;
     cin >>t;
 
-    while(t--){
-        long long int k;
-        int d0, d1;
-        cin >>k >>d0 >>d1;
+    while(t--)
+    {
+        long long int k, a, b;
+        cin >>k >>a >> b;
 
-        long int sum = 0;
-        sum += d0 + d1;
+        long long int digits_sum = a + b;
 
-        for(int i=2;i<k;i++){
-            int digit = sum%10;
-            sum += digit;
+        for(long long int i=0;i<k-2;i++)
+        {   
+            int temp = digits_sum%10;
+            digits_sum += temp;
         }
 
-        if(sum%3 == 0)
+        if(digits_sum%3 == 0)
             cout <<"YES";
         else
             cout <<"NO";
+
         cout <<endl;
     }
+
+    return 0;
 }
