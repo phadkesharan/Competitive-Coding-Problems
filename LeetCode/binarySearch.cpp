@@ -35,10 +35,27 @@ int search(vector <int>& nums, int target){
     return -1;
 }
 
+int binarySearch(vector <int> arr, int l, int h, int elem)
+    {
+        if(l > h)
+            return -1;
+        
+        int mid = l + (h-l)/2;
+        
+        if(arr[mid] > elem)
+            return binarySearch(arr, l, mid-1, elem);
+        
+        else if(arr[mid] < elem)
+            return binarySearch(arr, mid+1, h, elem);
+        
+        else 
+            return mid;
+    }
+
 int main()
 {
     vector <int> nums = {-1,0,3,5,9,12};
 
     display(nums);
-    cout<<search(nums, 9);
+    cout<<binarySearch(nums, 0, 5, 9);
 }
