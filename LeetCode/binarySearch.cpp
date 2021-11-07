@@ -69,12 +69,12 @@ int getPivot(vector<int> arr, int l, int h)
 
     else
     {
-        if (arr[0] < arr[mid])
+        if (arr[l] < arr[mid])
         {
-            return getPivot(arr, mid + 1, arr.size() - 1);
+            return getPivot(arr, mid + 1, h);
         }
         else
-            return getPivot(arr, 0, mid - 1);
+            return getPivot(arr, l, mid - 1);
     }
 }
 
