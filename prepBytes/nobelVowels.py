@@ -10,7 +10,7 @@ def isNobel(s):
         return False
 
     for i in range(len(s)-1):
-        if s[i] not in vowels:
+        if s[i] not in vowels and s[i] != 'n': 
             if s[i+1] not in vowels:
                 return False
 
