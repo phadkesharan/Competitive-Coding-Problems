@@ -7,11 +7,11 @@ Concepts used :
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isPossible(int arr[], int mid, int n, int p)
+bool isPossible(long long int arr[], long long int mid, long long int n, long long int p)
 {
-    int _sum = 0, painters = 1;
+    long long int _sum = 0, painters = 1;
 
-    for (int i = 0; i < n; i++)
+    for (long long int i = 0; i < n; i++)
     {
         if (arr[i] + _sum <= mid)
         {
@@ -36,23 +36,23 @@ bool isPossible(int arr[], int mid, int n, int p)
 
 int main()
 {
-    int t;
+    long long int t;
     cin >> t;
 
     while (t--)
     {
-        int n, p;
+        long long int n, p;
         cin >> n >> p;
 
-        int arr[n];
-        for (int i = 0; i < n; i++)
+        long long int arr[n];
+        for (long int i = 0; i < n; i++)
             cin >> arr[i];
 
-        int minTime = 0;
-        int _max = INT_MIN;
-        int _sum = 0;
+        long long int minTime = 0;
+        long long int _max = INT_MIN;
+        long long int _sum = 0;
 
-        for (int i = 0; i < n; i++)
+        for (long long int i = 0; i < n; i++)
         {
             _sum += arr[i];
             if (arr[i] > _max)
@@ -66,8 +66,8 @@ int main()
 
         else
         {
-            int l = 0, h = _sum, mid;
-            int lastAns=0;
+            long long int l = 0, h = _sum, mid;
+            long long int lastAns=0;
             while (l <= h)
             {
                 if(l == h)
