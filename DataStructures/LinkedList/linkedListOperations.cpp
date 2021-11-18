@@ -102,6 +102,36 @@ node* deleteFromEnd(node* head) {
 
     node* deletedNode = temp->next;
     temp->next = NULL; 
+    free(deletedNode);
+    return head;
+}
+
+// delete from index
+node* deleteFromIndex(node* head, int index) {
+    node* temp = head;
+
+    if(index == 0)
+        return deleteFromBeginning(head);
+
+    for(int i=0;i<index-1;i++) {
+
+        if(temp == NULL) {
+            cout <<"Index out of range!!" <<endl;
+            return head;
+        }
+
+        if(temp->next == NULL) {
+            return deleteFromBeginning(head);
+        }
+
+        temp = temp->next;
+    }
+
+    node* deletedNode = temp->next;
+    temp->next = deletedNode->next;
+    free(deletedNode);
+
+    return head;
 }
 
 
@@ -132,7 +162,11 @@ int main() {
     // head2 = insertAtEnd(head2, 1000);
     // printList(head2);
 
+    // printList(head);
+    // head = insertAtIndex(head, 4004, 0);
+    // printList(head);
+
     printList(head);
-    head = insertAtIndex(head, 4004, 0);
+    head = deleteFromIndex(head, 0);
     printList(head);
 }
