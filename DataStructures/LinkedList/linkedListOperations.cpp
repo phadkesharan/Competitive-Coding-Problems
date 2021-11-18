@@ -82,6 +82,28 @@ node* insertAtIndex(node *head, int value, int index) {
     return head;
 }
 
+// delete from beginning
+node* deleteFromBeginning(node* head) {
+    node* deletedNode = head;
+    head = head->next;
+
+    free(deletedNode);
+
+    return head;
+}
+
+// delete from the end
+node* deleteFromEnd(node* head) {
+    node* temp = head;
+
+    while(temp->next && temp->next->next) {
+        temp = temp->next;
+    }
+
+    node* deletedNode = temp->next;
+    temp->next = NULL; 
+}
+
 
 int main() {
 
