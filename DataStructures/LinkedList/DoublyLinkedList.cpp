@@ -114,6 +114,28 @@ node* deleteFromEnd(node* head) {
     return head;
 }
 
+node* deleteFromIndex(node *head, int index) {
+    node* temp = head;
+
+    if(index == 0) {
+        return deleteFromBeginning(head);
+    }
+
+    for(int i=0;i<index;i++) {
+        temp  = temp->next;
+    }
+
+    if(temp->next == NULL) {
+        return deleteFromEnd(head);
+    }
+
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+    free(temp);
+
+    return head;
+}
+
 node* deleteElement(node *head, int elem) {
     node* temp = head;
 
@@ -170,9 +192,14 @@ int main() {
     // head = deleteElement(head, 10);
     // printList(head);
 
-    head = deleteFromBeginning(head);
+    // head = deleteFromBeginning(head);
+    // printList(head);
+    // head = deleteFromEnd(head);
+    // printList(head);
+
+    head = deleteFromIndex(head, 0);
     printList(head);
-    head = deleteFromEnd(head);
+    head = deleteFromIndex(head, 2);
     printList(head);
 
     // printList(head);
