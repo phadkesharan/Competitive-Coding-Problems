@@ -93,6 +93,59 @@ node* insertAtIndex(node* head, int value, int index) {
 
 }
 
+node* deleteFromBeginning(node* head) {
+    node* temp = head;
+
+    head = temp->next;
+    head->prev = NULL;
+    free(temp);
+    return head;
+}
+
+node* deleteFromEnd(node* head) {
+    node* temp = head;
+
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    temp->prev->next = NULL;
+    free(temp);
+    return head;
+}
+
+node* deleteElement(node *head, int elem) {
+    node* temp = head;
+
+    if(head == NULL) {
+        cout <<"the list is empty!" <<endl;
+        return head;
+    }
+
+    if(head->data == elem) {
+        return deleteFromBeginning(head);
+    }
+
+    while(temp->next!= NULL) {
+        if(temp->data == elem) {
+            node* p = temp->prev;
+            p->next = temp->next;
+            temp->next->prev = p;
+
+            return head;
+        }
+
+        temp = temp->next;
+    }
+
+    if(temp->data == elem){
+        return deleteFromEnd(head);
+    }
+
+    cout <<"this element is not present in the linkedList" <<endl;
+    return head; 
+}
+
 
 int main() {
     node *head, *node1, *node2, *node3, *node4;
@@ -112,9 +165,18 @@ int main() {
     node4->next = NULL;
 
     head = node1;
+    printList(head);
+
+    // head = deleteElement(head, 10);
+    // printList(head);
+
+    head = deleteFromBeginning(head);
+    printList(head);
+    head = deleteFromEnd(head);
+    printList(head);
 
     // printList(head);
-    printListRev(node4);
+    // printListRev(node4);
 
     //insertAtBeginning
     // head = insertAtBeginning(head, 100);
