@@ -98,6 +98,7 @@ node* deleteFromBeginning(node* head) {
 
     head = temp->next;
     head->prev = NULL;
+    temp->next = NULL;
     free(temp);
     return head;
 }
@@ -110,6 +111,7 @@ node* deleteFromEnd(node* head) {
     }
 
     temp->prev->next = NULL;
+    temp->prev = NULL;
     free(temp);
     return head;
 }
