@@ -59,15 +59,18 @@ node* deleteFromStart(node* head) {
         cout <<"Empty List\n";
         return head;        
     }
-    node* temp = head;
+    node* temp = head, *newHead=NULL;
 
     while(temp->next != head) {
         temp = temp->next;
     }
 
     temp->next = head->next;
-    head = head->next;
-    return head;
+    newHead = head->next;
+
+    temp->next = NULL;
+    free(temp);
+    return newHead;
 }
 
 node* deleteFromEnd(node *head) {
@@ -83,13 +86,14 @@ node* deleteFromEnd(node *head) {
         temp = temp->next;
     }
 
+    temp->next = NULL;
+    free(temp);
     prev->next = head;
     return head;
 }
 
 
 int main() {
-
     node *head, *one, *two, *three;
 
     one = new node(1);
