@@ -53,6 +53,40 @@ node* insertAtEnd(node* head, int data) {
     return head;
 }
 
+node* deleteFromStart(node* head) {
+
+    if(head == NULL) {
+        cout <<"Empty List\n";
+        return head;        
+    }
+    node* temp = head;
+
+    while(temp->next != head) {
+        temp = temp->next;
+    }
+
+    temp->next = head->next;
+    head = head->next;
+    return head;
+}
+
+node* deleteFromEnd(node *head) {
+    node* temp = head, *prev=NULL;
+
+    if(head == NULL) {
+        cout <<"Empty List\n";
+        return head;        
+    }
+
+    while(temp->next != head) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    prev->next = head;
+    return head;
+}
+
 
 int main() {
 
@@ -74,5 +108,11 @@ int main() {
     displayList(head);
 
     head = insertAtEnd(head, 200);
+    displayList(head);
+
+    head = deleteFromStart(head);
+    displayList(head);
+
+    head = deleteFromEnd(head);
     displayList(head);
 }
