@@ -170,6 +170,40 @@ node* deleteElement(node *head, int elem) {
     return head; 
 }
 
+node* reverseList(node* head) {
+    if(head == NULL) {
+        cout <<"The List is empty\n";
+        return head;
+    }
+
+    node *p=NULL, *c=head, *n=NULL;
+
+    while(c != NULL) {
+        n = c->next;
+        c->next = p;
+        c->prev = n;
+        p = c;
+        c = n;
+    }
+
+    return p;
+
+}
+
+void reversePrint(node* head) {
+    node* temp = head;
+
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    while(temp!=NULL){
+        cout <<temp->data <<" ";
+        temp = temp->prev;
+    }
+    cout <<endl;
+}
+
 
 int main() {
     node *head, *node1, *node2, *node3, *node4;
@@ -191,6 +225,11 @@ int main() {
     head = node1;
     printList(head);
 
+    head = reverseList(head);
+    printList(head);
+
+    reversePrint(head);
+
     // head = deleteElement(head, 10);
     // printList(head);
 
@@ -199,10 +238,10 @@ int main() {
     // head = deleteFromEnd(head);
     // printList(head);
 
-    head = deleteFromIndex(head, 0);
-    printList(head);
-    head = deleteFromIndex(head, 2);
-    printList(head);
+    // head = deleteFromIndex(head, 0);
+    // printList(head);
+    // head = deleteFromIndex(head, 2);
+    // printList(head);
 
     // printList(head);
     // printListRev(node4);
