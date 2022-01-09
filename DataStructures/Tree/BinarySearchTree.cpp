@@ -59,6 +59,25 @@ int getMin(Node* root) {
     return temp->data;
 }
 
+Node* insert(Node *root, int newData) {
+
+    if(root == NULL) {
+        Node *newNode = new Node(newData);
+        root = newNode;
+        return root;
+    }
+
+    if(newData > root->data) {
+        root->right = insert(root->right, newData);
+    }
+
+    else if(newData < root->data) {
+        root->left = insert(root->left, newData);
+    }
+
+    return root;
+}
+
 int main() {
     Node *root;
 
@@ -68,8 +87,8 @@ int main() {
     root->left->left = new Node(2);
     root->left->right = new Node(5);
 
-    cout <<"max : " <<getMax(root) <<endl;
-    cout <<"min : " <<getMin(root) <<endl;
+    insert(root, 6);
+    inOrder(root);
 }
 
 
